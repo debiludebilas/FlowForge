@@ -45,3 +45,5 @@ dist-ssr
 node_modules/
 dist/
 build/
+discord.xml
+workspace.xml
