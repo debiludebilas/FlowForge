@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from database import engine, Base
+from database import engine, Base, run_migrations
 from routers import tasks
 
 app = FastAPI(title="FlowForge API")
@@ -15,8 +15,8 @@ app.add_middleware(
     allow_headers = ["*"],
 )
 
-# Create tables
 Base.metadata.create_all(bind=engine)
+run_migrations()
 
 app.include_router(tasks.router)
 

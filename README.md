@@ -1,62 +1,160 @@
-# FlowForge: Full-Stack Task Management System
+# FlowForge
 
 ![Project Status](https://img.shields.io/badge/status-active-success.svg)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi)
+![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white)
 
-FlowForge is a robust Kanban-style task management application built to demonstrate modern full-stack architecture. It
-features a reactive Drag-and-Drop* interface (in progress), a high-performance Python backend, and fully containerised
-deployment.
+A full-stack Kanban task board built with React and FastAPI. Create tasks, drag them across columns, edit details inline, and set priority — all backed by a documented REST API and Dockerised deployment.
+
+**Live demo:** [Flowforge.com](https://flowforge-cha7.onrender.com)  
+**API docs (demo):** [Flowforge.com/docs](https://flowforge-backend-bwtn.onrender.com/docs)
+
+---
+
+## Demo
+
+![FlowForge demo](docs/demo.mp4)
+
+---
+
+## Screenshots
+
+<!-- Upload screenshots to docs/screenshots/ and replace the filenames below -->
+
+| Board overview | Drag & drop | Inline editing |
+|---|---|---|
+| ![Board overview](docs/screenshots/board.png) | ![Drag and drop](docs/screenshots/drag-drop.png) | ![Inline editing](docs/screenshots/inline-edit.png) |
+
+
+---
+
+## Features
+
+- **Kanban workflow** — organise tasks across *To Do*, *In Progress*, and *Done*
+- **Drag and drop** — move and reorder tasks within and between columns (`@dnd-kit`)
+- **Inline editing** — double-click titles and descriptions to edit in place
+- **Priority levels** — Urgent, Normal, and Low with colour-coded indicators
+- **REST API** — full CRUD with auto-generated Swagger UI
+- **Dockerised** — single-command local setup for frontend and backend
+
+---
 
 ## Tech Stack
 
-* **Frontend:** React (Vite), TypeScript, Tailwind CSS
-* **Backend:** Python, FastAPI, Pydantic, SQLAlchemy
-* **Database:** SQLite (Dev) / PostgreSQL (Prod ready)
-* **DevOps:** Docker, Docker Compose, Nginx
+| Layer | Technologies |
+|-------|-------------|
+| **Frontend** | React 19, TypeScript, Vite, Tailwind CSS, Axios, `@dnd-kit` |
+| **Backend** | Python, FastAPI, Pydantic, SQLAlchemy |
+| **Database** | SQLite (development) |
+| **DevOps** | Docker, Docker Compose, Nginx |
 
-## Key Features
+---
 
-* **Kanban Workflow:** Organise tasks by status (To Do, In Progress, Done).
-* **Instant Interaction:** Create, Delete, Edit, and Move tasks with real-time UI updates.
-* **Robust API:** Fully documented REST API with automatic Swagger UI generation.
-* **Dockerised:** Single-command deployment for both frontend and backend services.
+## Project Structure
 
-## How to Run
+```
+Full-Stack-Task-Management-Issue-Tracker-App/
+├── README.md
+└── flowforge/
+    ├── docker-compose.yml
+    ├── backend/          # FastAPI + SQLAlchemy
+    └── frontend/         # React + Vite
+```
 
-Prerequisites: [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+---
 
-1. **Clone the repository:**
+## Getting Started
+
+### Prerequisites
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+### Run locally
+
+1. **Clone the repository**
+
    ```bash
-   git clone [https://github.com/debiludebilas/Full-Stack-Task-Management-Issue-Tracker-App.git](https://github.com/debiludebilas/Full-Stack-Task-Management-Issue-Tracker-App.git)
-   cd flowforge
+   git clone https://github.com/nlankelis/FlowForge.git
+   cd Full-Stack-Task-Management-Issue-Tracker-App/flowforge
    ```
 
-2. **Start the application:**
+2. **Start the application**
+
    ```bash
    docker-compose up --build
    ```
 
-3. **Access the application:**
-   * **Frontend (Task Board):** [http://localhost:5173](http://localhost:5173)
-   * **Backend API Docs:** [http://localhost:8000/docs](http://localhost:8000/docs)
+3. **Open the app**
 
-## Future Roadmap (In Order)
+   | Service | URL |
+   |---------|-----|
+   | Frontend (task board) | http://localhost:5173 |
+   | Backend API | http://localhost:8000 |
+   | Swagger docs | http://localhost:8000/docs |
 
-1. **Visual Polish**
-* **Goal:** Make it look like Trello or Jira.
-* **Tech:** Tailwind
-* **Ideas:** 
-  * Color-coded badges (Red for "Urgent" and green for "chill").
-  * Uploadable avatars or custom given ones.
-  * Animations 
+### Run without Docker (optional)
 
-2. **Drag & Drop Tasks**
-* **Goal:** Made so the cards are actually draggable.
-* **Tech:** Library - `@dnd-kit/core`
+**Backend**
 
-3. **Authentication**
-* **Goal:** "Log In" screen. Users can only see their own tasks.
-* **Tech:** JWT (JSON Web Tokens), `bcrypt` (password hashing), React Context.
-* **Notes:** Going to be quite hard as I'll need to rewrite the database and API points.
+```bash
+cd flowforge/backend
+python -m venv venv
+venv\Scripts\activate        # Windows
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+**Frontend**
+
+```bash
+cd flowforge/frontend
+npm install
+npm run dev
+```
+
+---
+
+## API Overview
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/tasks/` | List all tasks |
+| `POST` | `/tasks/` | Create a task |
+| `GET` | `/tasks/{id}` | Get a task |
+| `PATCH` | `/tasks/{id}` | Update a task |
+| `DELETE` | `/tasks/{id}` | Delete a task |
+
+Tasks support `title`, `description`, `status` (*To Do* / *In Progress* / *Done*), and `priority` (*Urgent* / *Normal* / *Low*).
+
+---
+
+## Deployment
+
+<!-- Replace with your actual hosting provider and URLs if different from Render -->
+
+FlowForge is deployed on **[Render](https://flowforge-cha7.onrender.com)**.
+
+---
+
+## What I'd Add Next
+
+- User authentication (JWT, per-user boards)
+- Task due dates and filtering
+- PostgreSQL for production persistence
+
+---
+
+## Author
+
+**[Nojus Lankelis](https://github.com/nlankelis)**
+
+**[LinkedIn](https://www.linkedin.com/in/nojus-lankelis/)**
+
+---
+
+## Licence
+
+This project is open source and available for portfolio and educational use.

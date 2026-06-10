@@ -41,6 +41,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Grok / Cursor MCP tooling (local IDE integration)
+mcps/
+
 # Others
 node_modules/
 dist/

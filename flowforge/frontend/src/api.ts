@@ -1,12 +1,21 @@
 import axios from "axios"
+import type { TaskPriority } from "./constants"
 
 const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000"
 
 export interface Task {
-    id: number;
-    title: string;
-    description?: string;
-    status: string;
+    id: number
+    title: string
+    description?: string
+    status: string
+    priority: TaskPriority
+}
+
+export interface TaskUpdatePayload {
+    title?: string
+    description?: string
+    status?: string
+    priority?: TaskPriority
 }
 
 const api = axios.create({
@@ -18,12 +27,17 @@ export const getTasks = async () => {
     return response.data
 }
 
-export const createTask = async (task: { title: string; description?: string, status: string }) => {
+export const createTask = async (task: {
+    title: string
+    description?: string
+    status: string
+    priority?: TaskPriority
+}) => {
     const response = await api.post<Task>("/tasks/", task)
     return response.data
 }
 
-export const updateTask = async (taskId: number, task: any) => {
+export const updateTask = async (taskId: number, task: TaskUpdatePayload) => {
     const response = await api.patch<Task>(`/tasks/${taskId}`, task)
     return response.data
 }
