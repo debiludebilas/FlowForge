@@ -16,7 +16,9 @@ A full-stack Kanban task board built with React and FastAPI. Create tasks, drag 
 
 ## Demo
 
-[▶ Watch the demo video](docs/demo.mp4)
+[![FlowForge demo](https://img.youtube.com/vi/bdOTCCxjpHM/maxresdefault.jpg)](https://youtu.be/bdOTCCxjpHM)
+
+Click the thumbnail to watch on YouTube.
 
 ---
 
