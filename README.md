@@ -16,13 +16,11 @@ A full-stack Kanban task board built with React and FastAPI. Create tasks, drag 
 
 ## Demo
 
-![FlowForge demo](docs/demo.mp4)
+[▶ Watch the demo video](docs/demo.mp4)
 
 ---
 
 ## Screenshots
-
-<!-- Upload screenshots to docs/screenshots/ and replace the filenames below -->
 
 | Board overview | Drag & drop | Inline editing |
 |---|---|---|
@@ -132,8 +130,6 @@ Tasks support `title`, `description`, `status` (*To Do* / *In Progress* / *Done*
 ---
 
 ## Deployment
-
-<!-- Replace with your actual hosting provider and URLs if different from Render -->
 
 FlowForge is deployed on **[Render](https://flowforge-cha7.onrender.com)**.
 
