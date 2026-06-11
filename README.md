@@ -152,7 +152,3 @@ FlowForge is deployed on **[Render](https://flowforge-cha7.onrender.com)**.
 **[LinkedIn](https://www.linkedin.com/in/nojus-lankelis/)**
 
 ---
-
-## Licence
-
-This project is open source and available for portfolio and educational use.
